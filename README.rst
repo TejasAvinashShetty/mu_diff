@@ -18,7 +18,7 @@ mu_diff
    :alt: AppVeyor Continuous Integration
    :target: https://ci.appveyor.com/project/TejasAvinashShetty/mu-diff
 
-.. image:: https://img.shields.io/coveralls/github/TejasAvinashShetty/mu_diff/master.svg
+.. image:: https://coveralls.io/repos/github/TejasAvinashShetty/mu_diff/badge.svg?branch=master
    :alt: Coveralls
    :target: https://coveralls.io/github/TejasAvinashShetty/mu_diff?branch=master
 
