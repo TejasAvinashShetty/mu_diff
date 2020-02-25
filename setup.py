@@ -25,7 +25,7 @@ except OSError:
     history = ''
 
 # requirements for use
-requirements = [numpy,
+requirements = ['numpy',
                 ]
 
 # requirements for development (testing, generating docs)
