@@ -14,7 +14,7 @@ mu_diff
    :alt: Travis Continuous Integration
    :target: https://travis-ci.org/TejasAvinashShetty/mu_diff
 
-.. image:: https://img.shields.io/badge/appveyor-no%20id-red.svg
+.. image:: https://ci.appveyor.com/api/projects/status/8vq9v1308osixwft?svg=true
    :alt: AppVeyor Continuous Integration
    :target: https://ci.appveyor.com/project/TejasAvinashShetty/mu-diff
 
