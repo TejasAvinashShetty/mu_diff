@@ -17,18 +17,12 @@ matrix:
       addons:
         apt_packages:
           - pandoc
-    - name: Python 3.5
-      python: 3.5
-      env: TOXENV=py35-test
     - name: Python 3.6
       python: 3.6
       env: TOXENV=py36-test
     - name: Python 3.7
       python: 3.7
       env: TOXENV=py37-test
-    - name: Python 3.8
-      python: 3.8
-      env: TOXENV=py38-test
 
 install:
   # any failure stops the build
