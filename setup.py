@@ -82,7 +82,7 @@ setup(
     description=(
         "Takes two complex valued ndarrays and returns the sum of the absolute values of their differences"
     ),
-    python_requires=">=3.5",
+    python_requires=">=3.6<3.8",
     install_requires=requirements,
     extras_require={"dev": dev_requirements},
     license="GNU General Public License v3",
