@@ -1,9 +1,9 @@
 """Tests for `mu_diff` package."""
 
 import pytest
-from pkg_resources import parse_version
 from numpy.random import random_sample
-from numpy.testing import assert_allclose
+# from numpy.testing import assert_allclose
+from pkg_resources import parse_version
 
 # from mu_diff import mu_diff_maker
 import mu_diff

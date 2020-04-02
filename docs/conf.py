@@ -1,18 +1,22 @@
 # -*- coding: utf-8 -*-
 import datetime
-from pathlib import Path
 import os
 import sys
+from pathlib import Path
 
 import git
+from sphinx.ext.autodoc import (
+    ClassLevelDocumenter,
+    InstanceAttributeDocumenter,
+)
 
 import mu_diff
 
 
 DOCS = Path(__file__).parent
-ROOT = DOCS / '..'
+ROOT = DOCS / ".."
 
-sys.path.insert(0, os.path.abspath('_extensions'))
+sys.path.insert(0, os.path.abspath("_extensions"))
 
 # -- Generate API documentation ------------------------------------------------
 
@@ -21,56 +25,56 @@ sys.path.insert(0, os.path.abspath('_extensions'))
 
 # Report broken links as warnings
 nitpicky = True
-nitpick_ignore = [('py:class', 'callable')]
+nitpick_ignore = [("py:class", "callable")]
 
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.coverage',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.extlinks',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.todo',
-    'sphinx.ext.inheritance_diagram',
-    'dollarmath',
-    'sphinx_autodoc_typehints',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.doctest",
+    "sphinx.ext.coverage",
+    "sphinx.ext.mathjax",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.extlinks",
+    "sphinx.ext.ifconfig",
+    "sphinx.ext.todo",
+    "sphinx.ext.inheritance_diagram",
+    "dollarmath",
+    "sphinx_autodoc_typehints",
 ]
 
-extensions.append('nbsphinx')
+extensions.append("nbsphinx")
 
 
-if os.getenv('SPELLCHECK'):
-    extensions.append('sphinxcontrib.spelling')
+if os.getenv("SPELLCHECK"):
+    extensions.append("sphinxcontrib.spelling")
     spelling_show_suggestions = True
-    spelling_lang = os.getenv('SPELLCHECK')
-    spelling_word_list_filename = 'spelling_wordlist.txt'
+    spelling_lang = os.getenv("SPELLCHECK")
+    spelling_word_list_filename = "spelling_wordlist.txt"
     spelling_ignore_pypi_package_names = True
 
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/3.7', None),
-    'sympy': ('https://docs.sympy.org/latest/', None),
-    'scipy': ('https://docs.scipy.org/doc/scipy/reference/', None),
-    'numpy': ('https://docs.scipy.org/doc/numpy/', None),
-    'matplotlib': ('https://matplotlib.org/', None),
+    "python": ("https://docs.python.org/3.7", None),
+    "sympy": ("https://docs.sympy.org/latest/", None),
+    "scipy": ("https://docs.scipy.org/doc/scipy/reference/", None),
+    "numpy": ("https://docs.scipy.org/doc/numpy/", None),
+    "matplotlib": ("https://matplotlib.org/", None),
 }
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
-source_suffix = '.rst'
-master_doc = 'index'
-project = 'mu_diff'
+source_suffix = ".rst"
+master_doc = "index"
+project = "mu_diff"
 year = str(datetime.datetime.now().year)
-author = 'Tejas Shetty'
-copyright = '{0}, {1}'.format(year, author)
+author = "Tejas Shetty"
+copyright = "{0}, {1}".format(year, author)
 version = mu_diff.__version__
 release = version
 git_tag = "v%s" % version
-if version.endswith('dev'):
+if version.endswith("dev"):
     try:
         last_commit = str(git.Repo(ROOT).head.commit)[:7]
         release = "%s (%s)" % (version, last_commit)
@@ -79,39 +83,37 @@ if version.endswith('dev'):
         git_tag = "master"
 numfig = True
 
-pygments_style = 'friendly'
+pygments_style = "friendly"
 extlinks = {
-    'issue': ('https://github.com/TejasAvinashShetty/mu_diff/issues/%s', '#'),
-    'pr': ('https://github.com/TejasAvinashShetty/mu_diff/pull/%s', 'PR #'),
+    "issue": ("https://github.com/TejasAvinashShetty/mu_diff/issues/%s", "#"),
+    "pr": ("https://github.com/TejasAvinashShetty/mu_diff/pull/%s", "PR #"),
 }
 
 # autodoc settings
-autoclass_content = 'both'
-autodoc_member_order = 'bysource'
+autoclass_content = "both"
+autodoc_member_order = "bysource"
 autodoc_mock_imports = []  # e.g.: 'numpy', 'scipy', ...
 
 
-html_last_updated_fmt = '%b %d, %Y'
+html_last_updated_fmt = "%b %d, %Y"
 html_split_index = False
-html_sidebars = {'**': ['searchbox.html', 'globaltoc.html', 'sourcelink.html']}
-html_short_title = '%s-%s' % (project, version)
+html_sidebars = {"**": ["searchbox.html", "globaltoc.html", "sourcelink.html"]}
+html_short_title = "%s-%s" % (project, version)
 
 
 # Mathjax settings
-mathjax_path = (
-    'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js'
-)
+mathjax_path = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js"
 mathjax_config = {
-    'extensions': ['tex2jax.js'],
-    'jax': ['input/TeX', 'output/SVG'],
-    'TeX': {
-        'extensions': ["AMSmath.js", "AMSsymbols.js"],
-        'Macros': {
-            'Re': ['{\\operatorname{Re}}', 0],
-            'Im': ['{\\operatorname{Im}}', 0],
-            'Real': ['{\\mathbb{R}}', 0],
-            'Complex': ['{\\mathbb{C}}', 0],
-            'Integer': ['{\\mathbb{N}}', 0],
+    "extensions": ["tex2jax.js"],
+    "jax": ["input/TeX", "output/SVG"],
+    "TeX": {
+        "extensions": ["AMSmath.js", "AMSsymbols.js"],
+        "Macros": {
+            "Re": ["{\\operatorname{Re}}", 0],
+            "Im": ["{\\operatorname{Im}}", 0],
+            "Real": ["{\\mathbb{R}}", 0],
+            "Complex": ["{\\mathbb{C}}", 0],
+            "Integer": ["{\\mathbb{N}}", 0],
         },
     },
 }
@@ -131,11 +133,6 @@ napoleon_use_rtype = True
 
 # -- Monkeypatch for instance attribs (sphinx bug #2044) -----------------------
 
-from sphinx.ext.autodoc import (
-    ClassLevelDocumenter,
-    InstanceAttributeDocumenter,
-)
-
 
 def iad_add_directive_header(self, sig):
     ClassLevelDocumenter.add_directive_header(self, sig)
@@ -147,7 +144,7 @@ InstanceAttributeDocumenter.add_directive_header = iad_add_directive_header
 
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from
 # docs.readthedocs.org
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+on_rtd = os.environ.get("READTHEDOCS", None) == "True"
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
@@ -162,9 +159,9 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'collapse_navigation': True,
-    'display_version': True,
-    'navigation_depth': 4,
+    "collapse_navigation": True,
+    "display_version": True,
+    "navigation_depth": 4,
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -189,7 +186,7 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
 # JavaScript filenames, relative to html_static_path
 html_js_files = ["version-alert.js"]
@@ -244,25 +241,25 @@ nbsphinx_prolog = r"""
 
     :raw-html:`<a href="http://nbviewer.jupyter.org/github/TejasAvinashShetty/mu_diff/blob/<<GIT_TAG>>/{{ docname }}" target="_blank"><img alt="Render on nbviewer" src="https://img.shields.io/badge/render%20on-nbviewer-orange.svg" style="vertical-align:text-bottom"></a>&nbsp;<a href="https://mybinder.org/v2/gh/TejasAvinashShetty/mu_diff/<<GIT_TAG>>?filepath={{ docname }}}" target="_blank"><img alt="Launch Binder" src="https://mybinder.org/badge_logo.svg" style="vertical-align:text-bottom"></a>`
 """.replace(
-    '<<GIT_TAG>>', git_tag
+    "<<GIT_TAG>>", git_tag
 )
 
 # -- Options for LaTeX output -------------------------------------------------
 
 # latex_engine = 'lualatex'
 latex_elements = {
-    'preamble': r'''
+    "preamble": r"""
 \usepackage[titles]{tocloft}
 \cftsetpnumwidth {1.25cm}\cftsetrmarg{1.5cm}
 \setlength{\cftchapnumwidth}{0.75cm}
 \setlength{\cftsecindent}{\cftchapnumwidth}
 \setlength{\cftsecnumwidth}{1.25cm}
 \usepackage{emptypage}
-''',
-    'fncychap': r'\usepackage[Bjornstrup]{fncychap}',
-    'printindex': r'\footnotesize\raggedright\printindex',
-    'babel': '',
+""",
+    "fncychap": r"\usepackage[Bjornstrup]{fncychap}",
+    "printindex": r"\footnotesize\raggedright\printindex",
+    "babel": "",
 }
-latex_show_urls = 'no'
+latex_show_urls = "no"
 
 # -----------------------------------------------------------------------------
