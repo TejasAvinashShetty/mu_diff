@@ -1,5 +1,7 @@
 from numpy import absolute
 
+__all__ = ["mu_diff_maker"]
+
 
 def mu_diff_maker(mu_end_targ, mu_end_cal):
     delta_mu_end = mu_end_targ - mu_end_cal
